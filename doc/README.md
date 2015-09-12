@@ -185,7 +185,7 @@ couple of requests.
 
 ```erlang
 
-Transport = hackney_tcp_transport,
+Transport = hackney_tcp,
 Host = << "https://friendpaste.com" >>,
 Port = 443,
 Options = [],
