@@ -19,7 +19,7 @@ Rebar2Deps = [
 
               {certifi, ".*",
                {git, "https://github.com/certifi/erlang-certifi",
-                {tag, "0.2.0"}}},
+                {tag, "0.3.0"}}},
 
               {ssl_verify_hostname, ".*",
                {git, "https://github.com/deadtrickster/ssl_verify_hostname.erl",
@@ -31,7 +31,7 @@ Rebar2Deps = [
 
               {metrics, ".*",
                {git, "https://github.com/benoitc/metrics.git",
-                {tag, "0.1.0"}}}
+                {tag, "0.2.0"}}}
 
              ],
 
