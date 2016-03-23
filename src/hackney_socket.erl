@@ -20,7 +20,7 @@ connect(Address, Port, Options) -> connect(Address, Port, Options, infinity).
 
 %% @doc Connects to a server on TCP port Port on the host with IP address Address. The Address argument can be either a hostname, or an IP address.
 -spec connect(Address, Port, Options, Timeout) -> {ok, HSock} | {error, Reason}
-    when Address :: inet:ip_address() | inet:hostname(),
+    when Address :: inet:ip_address() | inet:hostname(),
          Port :: inet:port_number(),
          Options :: [gen_tcp:connect_option()],
          Timeout :: timeout(),
@@ -35,7 +35,7 @@ connect(Address, Port, Options, Timeout) ->
 secure(HS, Options) -> secure(HS, Options, infinity).
 
 %% @doc upgrade the socket to SSL
--spec secure(HSock, SSlOptions, Timeout) -> {ok, HSock2} | {error, Reason}
+-spec secure(HSock, SSlOptions, Timeout) -> {ok, HSock2} | {error, Reason}
     when HSock :: hsock(),
          SSlOptions :: [ssl:ssloption()],
          Timeout :: timeout(),
@@ -75,7 +75,7 @@ send(#hsock{mod=Mod, sock=Sock}, Data) -> Mod:send(Sock, Data).
 recv(HS, Len) -> recv(HS, Len, infinity).
 
 %% @doc This function receives a packet from a socket in passive mode. A closed socket is indicated by a return value {error, closed}.
--spec recv(HSock, Len, Timeout) -> {ok, Data} | {error, Reason}
+-spec recv(HSock, Len, Timeout) -> {ok, Data} | {error, Reason}
     when HSock :: hsock(),
          Len :: non_neg_integer(),
          Timeout :: timeout(),
