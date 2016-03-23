@@ -30,6 +30,16 @@ client_ref() = term()
 
 
 
+### <a name="type-req_options">req_options()</a> ###
+
+
+<pre><code>
+req_options() = list()
+</code></pre>
+
+
+
+
 ### <a name="type-url">url()</a> ###
 
 
@@ -45,8 +55,8 @@ url() = #hackney_url{}
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#body-1">body/1</a></td><td>Return the full body sent with the response.</td></tr><tr><td valign="top"><a href="#body-2">body/2</a></td><td>Return the full body sent with the response as long as the body
 length doesn't go over MaxLength.</td></tr><tr><td valign="top"><a href="#cancel_request-1">cancel_request/1</a></td><td>Extract raw informations from the client context
 This feature can be useful when you want to create a simple proxy, rerouting
-on the headers and the status line and continue to forward the connection for example.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>close the client.</td></tr><tr><td valign="top"><a href="#connect-1">connect/1</a></td><td></td></tr><tr><td valign="top"><a href="#connect-2">connect/2</a></td><td></td></tr><tr><td valign="top"><a href="#connect-3">connect/3</a></td><td>connect a socket and create a client state.</td></tr><tr><td valign="top"><a href="#connect-4">connect/4</a></td><td></td></tr><tr><td valign="top"><a href="#controlling_process-2">controlling_process/2</a></td><td>Assign a new controlling process <em>Pid</em> to <em>Client</em>.</td></tr><tr><td valign="top"><a href="#cookies-1">cookies/1</a></td><td></td></tr><tr><td valign="top"><a href="#finish_send_body-1">finish_send_body/1</a></td><td></td></tr><tr><td valign="top"><a href="#location-1">location/1</a></td><td>return the requested location.</td></tr><tr><td valign="top"><a href="#pause_stream-1">pause_stream/1</a></td><td>pause a response stream, the stream process will hibernate and
-be woken later by the resume function.</td></tr><tr><td valign="top"><a href="#redirect_location-1">redirect_location/1</a></td><td></td></tr><tr><td valign="top"><a href="#request-1">request/1</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request-2">request/2</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request-3">request/3</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request-4">request/4</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request-5">request/5</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request_info-1">request_info/1</a></td><td>get request info.</td></tr><tr><td valign="top"><a href="#resume_stream-1">resume_stream/1</a></td><td>resume a paused response stream, the stream process will be
+on the headers and the status line and continue to forward the connection for example.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>close the client.</td></tr><tr><td valign="top"><a href="#connect-1">connect/1</a></td><td></td></tr><tr><td valign="top"><a href="#connect-2">connect/2</a></td><td></td></tr><tr><td valign="top"><a href="#connect-3">connect/3</a></td><td>connect a socket and create a client state.</td></tr><tr><td valign="top"><a href="#connect-4">connect/4</a></td><td></td></tr><tr><td valign="top"><a href="#controlling_process-2">controlling_process/2</a></td><td>Assign a new controlling process <em>Pid</em> to <em>Client</em>.</td></tr><tr><td valign="top"><a href="#cookies-1">cookies/1</a></td><td></td></tr><tr><td valign="top"><a href="#delete-1">delete/1</a></td><td></td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td></td></tr><tr><td valign="top"><a href="#delete-3">delete/3</a></td><td>make a DELETE request.</td></tr><tr><td valign="top"><a href="#finish_send_body-1">finish_send_body/1</a></td><td></td></tr><tr><td valign="top"><a href="#get-1">get/1</a></td><td></td></tr><tr><td valign="top"><a href="#get-2">get/2</a></td><td></td></tr><tr><td valign="top"><a href="#get-3">get/3</a></td><td>make a GET request.</td></tr><tr><td valign="top"><a href="#head-1">head/1</a></td><td></td></tr><tr><td valign="top"><a href="#head-2">head/2</a></td><td></td></tr><tr><td valign="top"><a href="#head-3">head/3</a></td><td>make an HEAD request.</td></tr><tr><td valign="top"><a href="#location-1">location/1</a></td><td>return the requested location.</td></tr><tr><td valign="top"><a href="#patch-2">patch/2</a></td><td></td></tr><tr><td valign="top"><a href="#patch-3">patch/3</a></td><td></td></tr><tr><td valign="top"><a href="#patch-4">patch/4</a></td><td>make a PATCH request.</td></tr><tr><td valign="top"><a href="#pause_stream-1">pause_stream/1</a></td><td>pause a response stream, the stream process will hibernate and
+be woken later by the resume function.</td></tr><tr><td valign="top"><a href="#post-2">post/2</a></td><td></td></tr><tr><td valign="top"><a href="#post-3">post/3</a></td><td></td></tr><tr><td valign="top"><a href="#post-4">post/4</a></td><td>make a POST request.</td></tr><tr><td valign="top"><a href="#put-2">put/2</a></td><td></td></tr><tr><td valign="top"><a href="#put-3">put/3</a></td><td></td></tr><tr><td valign="top"><a href="#put-4">put/4</a></td><td>make a PUT request.</td></tr><tr><td valign="top"><a href="#redirect_location-1">redirect_location/1</a></td><td></td></tr><tr><td valign="top"><a href="#request-1">request/1</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request-2">request/2</a></td><td></td></tr><tr><td valign="top"><a href="#request-3">request/3</a></td><td></td></tr><tr><td valign="top"><a href="#request-4">request/4</a></td><td></td></tr><tr><td valign="top"><a href="#request-5">request/5</a></td><td>make a request.</td></tr><tr><td valign="top"><a href="#request_info-1">request_info/1</a></td><td>get request info.</td></tr><tr><td valign="top"><a href="#resume_stream-1">resume_stream/1</a></td><td>resume a paused response stream, the stream process will be
 awoken.</td></tr><tr><td valign="top"><a href="#send_body-2">send_body/2</a></td><td>send the request body until eob.</td></tr><tr><td valign="top"><a href="#send_multipart_body-2">send_multipart_body/2</a></td><td>send a multipart body until eof
 Possible value are :
 <ul>
@@ -179,11 +189,83 @@ cookies(Headers::list()) -&gt; list()
 </code></pre>
 <br />
 
+<a name="delete-1"></a>
+
+### delete/1 ###
+
+`delete(URL) -> any()`
+
+<a name="delete-2"></a>
+
+### delete/2 ###
+
+`delete(URL, Headers) -> any()`
+
+<a name="delete-3"></a>
+
+### delete/3 ###
+
+<pre><code>
+delete(URL, ReqHeaders, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
+
+make a DELETE request
+
 <a name="finish_send_body-1"></a>
 
 ### finish_send_body/1 ###
 
 `finish_send_body(Ref) -> any()`
+
+<a name="get-1"></a>
+
+### get/1 ###
+
+`get(URL) -> any()`
+
+<a name="get-2"></a>
+
+### get/2 ###
+
+`get(URL, Headers) -> any()`
+
+<a name="get-3"></a>
+
+### get/3 ###
+
+<pre><code>
+get(URL, ReqHeaders, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
+
+make a GET request
+
+<a name="head-1"></a>
+
+### head/1 ###
+
+`head(URL) -> any()`
+
+<a name="head-2"></a>
+
+### head/2 ###
+
+`head(URL, Headers) -> any()`
+
+<a name="head-3"></a>
+
+### head/3 ###
+
+<pre><code>
+head(URL, ReqHeaders, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li></ul>
+
+make an HEAD request
 
 <a name="location-1"></a>
 
@@ -196,6 +278,30 @@ location(Ref::<a href="#type-client_ref">client_ref()</a>) -&gt; binary()
 
 return the requested location
 
+<a name="patch-2"></a>
+
+### patch/2 ###
+
+`patch(URL, Body) -> any()`
+
+<a name="patch-3"></a>
+
+### patch/3 ###
+
+`patch(URL, Headers, Body) -> any()`
+
+<a name="patch-4"></a>
+
+### patch/4 ###
+
+<pre><code>
+patch(URL, ReqHeaders, Body, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Body = binary()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
+
+make a PATCH request
+
 <a name="pause_stream-1"></a>
 
 ### pause_stream/1 ###
@@ -207,6 +313,54 @@ pause_stream(Ref::<a href="#type-client_ref">client_ref()</a>) -&gt; ok | {error
 
 pause a response stream, the stream process will hibernate and
 be woken later by the resume function
+
+<a name="post-2"></a>
+
+### post/2 ###
+
+`post(URL, Body) -> any()`
+
+<a name="post-3"></a>
+
+### post/3 ###
+
+`post(URL, Headers, Body) -> any()`
+
+<a name="post-4"></a>
+
+### post/4 ###
+
+<pre><code>
+post(URL, ReqHeaders, Body, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Body = binary()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
+
+make a POST request
+
+<a name="put-2"></a>
+
+### put/2 ###
+
+`put(URL, Body) -> any()`
+
+<a name="put-3"></a>
+
+### put/3 ###
+
+`put(URL, Headers, Body) -> any()`
+
+<a name="put-4"></a>
+
+### put/4 ###
+
+<pre><code>
+put(URL, ReqHeaders, Body, Options) -&gt; Response
+</code></pre>
+
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Body = binary()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
+
+make a PUT request
 
 <a name="redirect_location-1"></a>
 
@@ -229,43 +383,29 @@ make a request
 
 ### request/2 ###
 
-<pre><code>
-request(Method::term(), URL::<a href="#type-url">url()</a> | binary() | list()) -&gt; {ok, integer(), list(), <a href="#type-client_ref">client_ref()</a>} | {ok, integer(), list()} | {error, term()}
-</code></pre>
-<br />
-
-make a request
+`request(Method, URL) -> any()`
 
 <a name="request-3"></a>
 
 ### request/3 ###
 
-<pre><code>
-request(Method::term(), URL::<a href="#type-url">url()</a> | binary() | list(), Headers::list()) -&gt; {ok, integer(), list(), <a href="#type-client_ref">client_ref()</a>} | {ok, integer(), list()} | {error, term()}
-</code></pre>
-<br />
-
-make a request
+`request(Method, URL, Headers) -> any()`
 
 <a name="request-4"></a>
 
 ### request/4 ###
 
-<pre><code>
-request(Method::term(), URL::<a href="#type-url">url()</a> | binary() | list(), Headers::list(), Body::term()) -&gt; {ok, integer(), list(), <a href="#type-client_ref">client_ref()</a>} | {ok, integer(), list()} | {error, term()}
-</code></pre>
-<br />
-
-make a request
+`request(Method, URL, Headers, Body) -> any()`
 
 <a name="request-5"></a>
 
 ### request/5 ###
 
 <pre><code>
-request(Method::term(), Hackney_url::<a href="#type-url">url()</a> | binary() | list(), Headers::list(), Body::term(), Options0::list()) -&gt; {ok, integer(), list(), <a href="#type-client_ref">client_ref()</a>} | {ok, integer(), list()} | {ok, <a href="#type-client_ref">client_ref()</a>} | {error, term()}
+request(Method, URL, ReqHeaders, Body, Options) -&gt; Response
 </code></pre>
-<br />
+
+<ul class="definitions"><li><code>Method = binary() | atom() | list()</code></li><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Body = binary()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders, Ref} | {ok, Status, RespHeaders, RespBody} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>RespBody = binary()</code></li></ul>
 
 make a request
 
@@ -318,7 +458,7 @@ receive the other messages use the function
 `hackney:stream_next/1`
 
 * `{path_encode_fun, fun()}`: function used to encode the path. if
-not set it will use `hackney_url:path_encode/1` the function takes the
+not set it will use `hackney_url:pathencode/1` the function takes the
 binary path as entry and return a new encoded path.
 
 * `{stream_to, pid()}`: If async is true or once, the response

@@ -24,16 +24,21 @@
          cancel_request/1,
          setopts/2]).
 
+
+%% REST API
+-export([head/1, head/2, head/3]).
+-export([get/1, get/2, get/3]).
+-export([delete/1, delete/2, delete/3]).
+-export([post/2, post/3, post/4]).
+-export([put/2, put/3, put/4]).
+-export([patch/2, patch/3, patch/4]).
+
 -export([redirect_location/1]).
 
 -export([stream_next/1,
          stop_async/1,
          pause_stream/1,
          resume_stream/1]).
-
--define(METHOD_TPL(Method),
-        -export([Method/1, Method/2, Method/3, Method/4])).
--include("hackney_methods.hrl").
 
 -include("hackney.hrl").
 -include("hackney_lib.hrl").
@@ -48,6 +53,11 @@
 
 -type client_ref() :: term().
 -export_type([client_ref/0]).
+
+-type req_options() :: list().
+-export_type([req_options/0]).
+
+
 
 %% @doc Start the hackney process. Useful when testing using the shell.
 start() ->
@@ -153,6 +163,146 @@ location(Ref) ->
                hackney_request:location(State)
         end).
 
+%% Client REST API
+
+head(URL) ->
+    head(URL, [], []).
+
+head(URL, Headers) ->
+    head(URL, Headers, []).
+
+%% @doc make an HEAD request
+-spec head(URL, ReqHeaders, Options) -> Response when
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders},
+    Ref :: hackney:client_ref(),
+    Status :: integer(),
+    RespHeaders :: list().
+head(URL, Headers, Options) ->
+    request(<<"HEAD">>, URL, Headers, <<>>, Options).
+
+
+get(URL) ->
+    get(URL, [], []).
+
+get(URL, Headers) ->
+    get(URL, Headers, []).
+
+%% @doc make a GET request
+-spec get(URL, ReqHeaders, Options) -> Response when
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders, Ref}
+               | {ok, Status, RespHeaders, RespBody}
+               | {ok, Status, RespHeaders},
+    Status :: integer(),
+    RespHeaders :: list(),
+    Ref :: hackney:client_ref(),
+    RespBody :: binary().
+get(URL, Headers, Options) ->
+    request(<<"GET">>, URL, Headers, <<>>, Options).
+
+delete(URL) ->
+    delete(URL, [], []).
+
+delete(URL, Headers) ->
+    delete(URL, Headers, []).
+
+%% @doc make a DELETE request
+-spec delete(URL, ReqHeaders, Options) -> Response when
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders, Ref}
+               | {ok, Status, RespHeaders, RespBody}
+               | {ok, Status, RespHeaders},
+    Status :: integer(),
+    RespHeaders :: list(),
+    Ref :: hackney:client_ref(),
+    RespBody :: binary().
+delete(URL, Headers, Options) ->
+    request(<<"DELETE">>, URL, Headers, <<>>, Options).
+
+post(URL, Body) ->
+    post(URL, [], Body, []).
+
+post(URL, Headers, Body) ->
+    post(URL, Headers, Body, []).
+
+%% @doc make a POST request
+-spec post(URL, ReqHeaders, Body, Options) -> Response when
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Body :: binary(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders, Ref}
+               | {ok, Status, RespHeaders, RespBody}
+               | {ok, Status, RespHeaders},
+    Status :: integer(),
+    RespHeaders :: list(),
+    Ref :: hackney:client_ref(),
+    RespBody :: binary().
+post(URL, Headers, Body, Options) ->
+    request(<<"POST">>, URL, Headers, Body, Options).
+
+put(URL, Body) ->
+    put(URL, [], Body, []).
+
+put(URL, Headers, Body) ->
+    put( URL, Headers, Body, []).
+
+%% @doc make a PUT request
+-spec put(URL, ReqHeaders, Body, Options) -> Response when
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Body :: binary(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders, Ref}
+               | {ok, Status, RespHeaders, RespBody}
+               | {ok, Status, RespHeaders},
+    Status :: integer(),
+    RespHeaders :: list(),
+    Ref :: hackney:client_ref(),
+    RespBody :: binary().
+put(URL, Headers, Body, Options) ->
+    request(<<"PUT">>, URL, Headers, Body, Options).
+
+patch(URL, Body) ->
+    patch(URL, [], Body, []).
+
+patch(URL, Headers, Body) ->
+    patch(URL, Headers, Body, []).
+
+%% @doc make a PATCH request
+-spec patch(URL, ReqHeaders, Body, Options) -> Response when
+      URL :: binary() | hackney:url(),
+      ReqHeaders :: list(),
+      Body :: binary(),
+      Options :: list(),
+      Response:: {error, term()}
+                 | {ok, Ref}
+                 | {ok, Status, RespHeaders, Ref}
+                 | {ok, Status, RespHeaders, RespBody}
+                 | {ok, Status, RespHeaders},
+      Status :: integer(),
+      RespHeaders :: list(),
+      Ref :: hackney:client_ref(),
+      RespBody :: binary().
+patch(URL, Headers, Body, Options) ->
+    request(<<"PATCH">>, URL, Headers, Body, Options).
 
 %% @doc make a request
 -spec request(url()|binary()|list())
@@ -162,27 +312,12 @@ location(Ref) ->
 request(URL) ->
     request(get, URL).
 
-%% @doc make a request
--spec request(term(), url()|binary()|list())
-    -> {ok, integer(), list(), client_ref()}
-    | {ok, integer(), list()}
-    | {error, term()}.
 request(Method, URL) ->
     request(Method, URL, [], <<>>, []).
 
-%% @doc make a request
--spec request(term(), url()|binary()|list(), list())
-    -> {ok, integer(), list(), client_ref()}
-    | {ok, integer(), list()}
-    | {error, term()}.
 request(Method, URL, Headers) ->
     request(Method, URL, Headers, <<>>, []).
 
-%% @doc make a request
--spec request(term(), url()|binary()|list(), list(), term())
-    -> {ok, integer(), list(), client_ref()}
-    | {ok, integer(), list()}
-    | {error, term()}.
 request(Method, URL, Headers, Body) ->
     request(Method, URL, Headers, Body, []).
 
@@ -292,15 +427,24 @@ request(Method, URL, Headers, Body) ->
 %%  Assume close to signal end</code>. </li>
 %%  <li><code>{error, term()}</code> other errors.</li>
 %%  </ul>
--spec request(term(), url() | binary() | list(), list(), term(), list())
-    -> {ok, integer(), list(), client_ref()}
-    | {ok, integer(), list()}
-    | {ok, client_ref()}
-    | {error, term()}.
+-spec request(Method, URL, ReqHeaders, Body, Options) -> Response when
+    Method :: binary() | atom() |list(),
+    URL :: binary() | hackney:url(),
+    ReqHeaders :: list(),
+    Body :: binary(),
+    Options :: list(),
+    Response:: {error, term()}
+               | {ok, Ref}
+               | {ok, Status, RespHeaders, Ref}
+               | {ok, Status, RespHeaders, RespBody}
+               | {ok, Status, RespHeaders},
+    Status :: integer(),
+    RespHeaders :: list(),
+    Ref :: hackney:client_ref(),
+    RespBody :: binary().
 request(Method, #hackney_url{}=URL0, Headers, Body, Options0) ->
     PathEncodeFun = proplists:get_value(path_encode_fun, Options0,
                                         fun hackney_url:pathencode/1),
-
 
     %% normalize the url encoding
     URL = hackney_url:normalize(URL0, PathEncodeFun),
@@ -1021,24 +1165,3 @@ parse_options([{max_body, MaxBody} | Rest], State) ->
     parse_options(Rest, State#client{max_body=MaxBody});
 parse_options([_ | Rest], State) ->
     parse_options(Rest, State).
-
--define(METHOD_TPL(Method),
-        Method(URL) ->
-            hackney:request(Method, URL)).
--include("hackney_methods.hrl").
-
--define(METHOD_TPL(Method),
-        Method(URL, Headers) ->
-            hackney:request(Method, URL, Headers)).
--include("hackney_methods.hrl").
-
-
--define(METHOD_TPL(Method),
-        Method(URL, Headers, Body) ->
-            hackney:request(Method, URL, Headers, Body)).
--include("hackney_methods.hrl").
-
--define(METHOD_TPL(Method),
-        Method(URL, Headers, Body, Options) ->
-            hackney:request(Method, URL, Headers, Body, Options)).
--include("hackney_methods.hrl").

@@ -33,7 +33,7 @@ stop(ok) -> ok.
 
 get_request() ->
     URL = <<"http://localhost:8000/get">>,
-    {ok, StatusCode, _, _} = hackney:request(get, URL, [], <<>>, []),
+    {ok, StatusCode, _, _} = hackney:request(get, URL, [],  []),
     ?_assertEqual(200, StatusCode).
 
 request_with_body() ->
@@ -103,7 +103,7 @@ absolute_redirect_request_follow() ->
 relative_redirect_request_no_follow() ->
     URL = <<"http://localhost:8000/relative-redirect/1">>,
     Options = [{follow_redirect, false}],
-    {ok, StatusCode, _, Client} = hackney:request(get, URL, [], <<>>, Options),
+    {ok, StatusCode, _, Client} = hackney:request(get, URL, [], <<>>,  Options),
     Location = hackney:location(Client),
     [?_assertEqual(302, StatusCode),
      ?_assertEqual(<<"/get">>, Location)].
@@ -119,7 +119,7 @@ relative_redirect_request_follow() ->
 async_request() ->
     URL = <<"http://localhost:8000/get">>,
     Options = [async],
-    {ok, ClientRef} = hackney:get(URL, [], <<>>, Options),
+    {ok, ClientRef} = hackney:get(URL, [], Options),
     {StatusCode, Keys} = receive_response(ClientRef),
     [?_assertEqual(200, StatusCode),
      ?_assertEqual([body, headers, status], Keys)].
@@ -127,7 +127,7 @@ async_request() ->
 async_head_request() ->
     URL = <<"http://localhost:8000/get">>,
     Options = [async],
-    {ok, ClientRef} = hackney:head(URL, [], <<>>, Options),
+    {ok, ClientRef} = hackney:head(URL, [],  Options),
     {StatusCode, Keys} = receive_response(ClientRef),
     [?_assertEqual(200, StatusCode),
      ?_assertEqual([headers, status], Keys)].
@@ -135,7 +135,7 @@ async_head_request() ->
 async_no_content_request() ->
     URL = <<"http://localhost:8000/status/204">>,
     Options = [async],
-    {ok, ClientRef} = hackney:get(URL, [], <<>>, Options),
+    {ok, ClientRef} = hackney:get(URL, [], Options),
     {StatusCode, Keys} = receive_response(ClientRef),
     [?_assertEqual(204, StatusCode),
      ?_assertEqual([headers, status], Keys)].
