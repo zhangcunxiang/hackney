@@ -263,7 +263,7 @@ make a GET request
 head(URL, ReqHeaders, Options) -&gt; Response
 </code></pre>
 
-<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Status, RespHeaders}</code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li></ul>
+<ul class="definitions"><li><code>URL = binary() | <a href="hackney.md#type-url">hackney:url()</a></code></li><li><code>ReqHeaders = list()</code></li><li><code>Options = list()</code></li><li><code>Response = {error, term()} | {ok, Ref} | {ok, Status, RespHeaders}</code></li><li><code>Ref = <a href="hackney.md#type-client_ref">hackney:client_ref()</a></code></li><li><code>Status = integer()</code></li><li><code>RespHeaders = list()</code></li></ul>
 
 make an HEAD request
 

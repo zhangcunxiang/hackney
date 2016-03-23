@@ -533,6 +533,7 @@ $ kill `cat httpbin.pid`
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_pool_handler.md" class="module">hackney_pool_handler</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_request.md" class="module">hackney_request</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_response.md" class="module">hackney_response</a></td></tr>
+<tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_socket.md" class="module">hackney_socket</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_socks5.md" class="module">hackney_socks5</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_ssl_transport.md" class="module">hackney_ssl_transport</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/hackney-v2/doc/hackney_stream.md" class="module">hackney_stream</a></td></tr>
