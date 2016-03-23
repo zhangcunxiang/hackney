@@ -43,3 +43,5 @@
         method = nil,
         path,
         ctype = nil}).
+
+-record(hsock, {mod, sock, secure=false}).

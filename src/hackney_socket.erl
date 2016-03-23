@@ -10,7 +10,8 @@
          peername/1,
          sockname/1]).
 
--record(hsock, {mod, sock, secure=false}).
+-include("hackney.hrl").
+
 -type hsock() :: #hsock{}.
 
 -export_types([hsock/0]).
@@ -18,7 +19,8 @@
 
 connect(Address, Port, Options) -> connect(Address, Port, Options, infinity).
 
-%% @doc Connects to a server on TCP port Port on the host with IP address Address. The Address argument can be either a hostname, or an IP address.
+%% @doc Connects to a server on TCP port Port on the host with IP address Address.
+%% The Address argument can be either a hostname, or an IP address.
 -spec connect(Address, Port, Options, Timeout) -> {ok, HSock} | {error, Reason}
     when Address :: inet:ip_address() | inet:hostname(),
          Port :: inet:port_number(),
