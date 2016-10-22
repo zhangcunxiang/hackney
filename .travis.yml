@@ -8,10 +8,10 @@ otp_release:
   - R16B02
   - R16B01
   - R16B
+env:
+  - TEST=1
 before_script:
-    - "./support/bootstrap_travis.sh"
     - "gunicorn httpbin:app&"
 before_install:
   - sudo pip install -q httpbin
   - sudo pip install -q gunicorn
-script: './rebar3 eunit --dir="test"'
